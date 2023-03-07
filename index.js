@@ -8,6 +8,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
 app.use(bodyParser.json());
+app.use(cors());
 
 // Allows us to communicate between different domain
 app.use((req, res, next) => {
@@ -43,9 +44,6 @@ app.use((req, res, next) => {
 });
 
 /** SOCKET IO */
-
-app.use(cors());
-
 const server = http.createServer(app);
 let activeUsers = [];
 
