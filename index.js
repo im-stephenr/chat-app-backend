@@ -112,9 +112,12 @@ mongoose
     `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.gudqyrg.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
   )
   .then(() => {
-    app.listen(process.env.SERVER_PORT, () => {
+    const listener = app.listen(process.env.SERVER_PORT, () => {
       console.log("Connected to server ", process.env.SERVER_PORT);
-      console.log("Express server listening on port %d", app.address());
+      console.log(
+        "Express server listening on port %d",
+        listener.address().port
+      );
     });
   })
   .catch((err) => {
