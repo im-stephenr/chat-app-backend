@@ -114,7 +114,7 @@ mongoose
   .then(() => {
     app.listen(process.env.SERVER_PORT, () => {
       console.log("Connected to server ", process.env.SERVER_PORT);
-      console.log("Express server listening on port %d", app.address().port);
+      console.log("Express server listening on port %d", app.address());
     });
   })
   .catch((err) => {
