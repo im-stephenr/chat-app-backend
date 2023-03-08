@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const http = require("http");
+const https = require("https");
 const cors = require("cors");
 const { Server } = require("socket.io");
 const HttpError = require("./model/http-error");
@@ -46,7 +46,7 @@ app.use((req, res, next) => {
 
 app.use(cors());
 
-const server = http.createServer(app);
+const server = https.createServer(app);
 let activeUsers = [];
 
 const io = new Server(server, {
