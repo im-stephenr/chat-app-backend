@@ -53,8 +53,7 @@ const io = new Server(server, {
   cors: {
     origin: "*", // which client server are we calling, using * meaning everyone can access this backend which is not advisable
     methods: ["GET", "POST"],
-    allowedHeaders:
-      "Access-Control-Allow-Headers, Origin, X-Requested-With, Content-Type, Accept",
+    allowedHeaders: "Origin, X-Requested-With, Content-Type, Accept",
   },
 });
 
