@@ -6,6 +6,8 @@ const { Server } = require("socket.io");
 const HttpError = require("./model/http-error");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const port = process.env.SERVER_PORT || 3002;
+const socketPort = process.env.SOCKET_PORT || 3000;
 
 app.use(bodyParser.json());
 
@@ -102,8 +104,8 @@ io.on("connection", (socket) => {
 });
 
 // socket io server
-server.listen(process.env.SOCKET_PORT, () => {
-  console.log("SOCKET SERVER RUNNING ", process.env.SOCKET_PORT);
+server.listen(socketPort, () => {
+  console.log("SOCKET SERVER RUNNING ", socketPort);
 });
 
 // mongoose / server
@@ -112,7 +114,7 @@ mongoose
     `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.gudqyrg.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
   )
   .then(() => {
-    const listener = app.listen(process.env.SERVER_PORT, () => {
+    const listener = app.listen(port, () => {
       console.log("Connected to server ", process.env.SERVER_PORT);
       console.log(
         "Express server listening on port %d",
